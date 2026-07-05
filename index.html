@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ST Tecnologia e Infraestrutura | Encruzilhada do Sul</title>
+  <meta name="description" content="Soluções em elétrica, redes, fibra óptica, segurança e infraestrutura. Atendemos Encruzilhada do Sul e região." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --azul:       #0367FC;
+      --lima:       #D2F801;
+      --lima-dark:  #b8d800;
+      --preto:      #161616;
+      --cinza-bg:   #F4F4F4;
+      --cinza-card: #E4E4E4;
+      --texto:      #161616;
+      --texto-suave:#5a5a5a;
+      --branco:     #FFFFFF;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      color: var(--texto);
+      background: var(--branco);
+      line-height: 1.6;
+    }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%;
+      height: 64px;
+      background: rgba(22, 22, 22, 0.97);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-logo {
+      font-family: 'Syne', sans-serif;
+      font-weight: 800;
+      font-size: 1.15rem;
+      color: var(--branco);
+      letter-spacing: 0.03em;
+      text-decoration: none;
+    }
+
+    .nav-logo span { color: var(--lima); }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      gap: 2rem;
+    }
+
+    nav ul a {
+      color: rgba(255,255,255,0.70);
+      text-decoration: none;
+      font-size: 0.875rem;
+      font-weight: 500;
+      transition: color 0.2s;
+    }
+
+    nav ul a:hover { color: var(--lima); }
+
+    .nav-cta {
+      background: var(--lima) !important;
+      color: var(--preto) !important;
+      padding: 0.45rem 1.1rem;
+      border-radius: 6px;
+      font-weight: 700 !important;
+      transition: background 0.2s !important;
+    }
+
+    .nav-cta:hover { background: var(--lima-dark) !important; }
+
+    /* ── HERO ── */
+    #hero {
+      min-height: 100vh;
+      background: var(--preto);
+      display: flex;
+      align-items: center;
+      padding: 80px 5% 60px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(210,248,1,0.07) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(210,248,1,0.07) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    /* acento azul no canto */
+    #hero::after {
+      content: '';
+      position: absolute;
+      top: -200px; right: -200px;
+      width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(3,103,252,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .hero-inner {
+      max-width: 720px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background: rgba(210,248,1,0.12);
+      border: 1px solid rgba(210,248,1,0.35);
+      color: var(--lima);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.35rem 0.9rem;
+      border-radius: 100px;
+      margin-bottom: 1.75rem;
+    }
+
+    .hero-inner h1 {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 800;
+      color: var(--branco);
+      line-height: 1.08;
+      margin-bottom: 1.25rem;
+    }
+
+    .hero-inner h1 em {
+      font-style: normal;
+      color: var(--lima);
+    }
+
+    .hero-inner p {
+      font-size: 1.05rem;
+      color: rgba(255,255,255,0.60);
+      max-width: 520px;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-btns {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+
+    .btn-primary {
+      background: var(--lima);
+      color: var(--preto);
+      padding: 0.9rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: background 0.2s, transform 0.15s;
+    }
+
+    .btn-primary:hover { background: var(--lima-dark); transform: translateY(-2px); }
+
+    .btn-ghost {
+      border: 1.5px solid rgba(255,255,255,0.25);
+      color: var(--branco);
+      padding: 0.9rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-decoration: none;
+      transition: border-color 0.2s, background 0.2s;
+    }
+
+    .btn-ghost:hover { border-color: var(--lima); color: var(--lima); }
+
+    /* ── SOBRE ── */
+    #sobre {
+      background: var(--cinza-bg);
+      padding: 90px 5%;
+    }
+
+    .sobre-grid {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: center;
+    }
+
+    .section-label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--azul);
+      margin-bottom: 0.75rem;
+    }
+
+    .section-title {
+      font-family: 'Syne', sans-serif;
+      font-size: clamp(1.7rem, 3vw, 2.4rem);
+      font-weight: 800;
+      color: var(--preto);
+      line-height: 1.12;
+      margin-bottom: 1.25rem;
+    }
+
+    .sobre-text p {
+      color: var(--texto-suave);
+      margin-bottom: 1rem;
+      font-size: 0.975rem;
+    }
+
+    .diferenciais {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .diferencial-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.85rem;
+      background: var(--branco);
+      padding: 1.1rem 1.25rem;
+      border-radius: 10px;
+      border-left: 4px solid var(--azul);
+    }
+
+    .diferencial-icon { font-size: 1.4rem; flex-shrink: 0; margin-top: 0.05rem; }
+
+    .diferencial-item strong {
+      display: block;
+      font-size: 0.9rem;
+      color: var(--preto);
+      margin-bottom: 0.2rem;
+    }
+
+    .diferencial-item span { font-size: 0.83rem; color: var(--texto-suave); }
+
+    /* ── SERVIÇOS ── */
+    #servicos {
+      padding: 90px 5%;
+      background: var(--branco);
+    }
+
+    .servicos-header {
+      max-width: 1100px;
+      margin: 0 auto 3rem;
+      text-align: center;
+    }
+
+    .servicos-header p {
+      color: var(--texto-suave);
+      max-width: 500px;
+      margin: 0.5rem auto 0;
+    }
+
+    .categorias {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .categoria-card {
+      background: var(--cinza-bg);
+      border-radius: 14px;
+      padding: 1.75rem;
+      border: 1px solid var(--cinza-card);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+
+    .categoria-card:hover {
+      box-shadow: 0 8px 32px rgba(3,103,252,0.12);
+      transform: translateY(-3px);
+    }
+
+    .cat-header {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .cat-icon {
+      width: 46px; height: 46px;
+      background: var(--azul);
+      border-radius: 10px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 1.3rem;
+      flex-shrink: 0;
+    }
+
+    .cat-header h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--preto);
+    }
+
+    .cat-lista {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.55rem;
+    }
+
+    .cat-lista li {
+      font-size: 0.875rem;
+      color: var(--texto-suave);
+      padding-left: 1rem;
+      position: relative;
+    }
+
+    .cat-lista li::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 50%;
+      transform: translateY(-50%);
+      width: 5px; height: 5px;
+      background: var(--lima-dark);
+      border-radius: 50%;
+    }
+
+    /* ── CONTATO ── */
+    #contato {
+      background: var(--preto);
+      padding: 90px 5%;
+      position: relative;
+      overflow: hidden;
+    }
+
+    #contato::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(210,248,1,0.05) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(210,248,1,0.05) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+    }
+
+    .contato-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+      position: relative;
+      z-index: 1;
+    }
+
+    .contato-info .section-label { color: var(--lima); }
+    .contato-info .section-title { color: var(--branco); }
+
+    .contato-info p {
+      color: rgba(255,255,255,0.58);
+      font-size: 0.975rem;
+      margin-bottom: 2rem;
+    }
+
+    .contato-canais {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .canal {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      text-decoration: none;
+      padding: 1rem 1.25rem;
+      background: rgba(255,255,255,0.05);
+      border: 1px solid rgba(255,255,255,0.10);
+      border-radius: 10px;
+      transition: background 0.2s, border-color 0.2s;
+    }
+
+    .canal:hover {
+      background: rgba(3,103,252,0.15);
+      border-color: var(--azul);
+    }
+
+    .canal-icon { font-size: 1.4rem; width: 40px; text-align: center; flex-shrink: 0; }
+
+    .canal-text strong { display: block; color: var(--branco); font-size: 0.875rem; margin-bottom: 0.15rem; }
+    .canal-text span { color: rgba(255,255,255,0.50); font-size: 0.82rem; }
+
+    /* FORM */
+    .contato-form {
+      background: var(--branco);
+      border-radius: 16px;
+      padding: 2rem;
+    }
+
+    .contato-form h3 {
+      font-family: 'Syne', sans-serif;
+      font-size: 1.1rem;
+      font-weight: 700;
+      color: var(--preto);
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group { margin-bottom: 1rem; }
+
+    .form-group label {
+      display: block;
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: var(--texto-suave);
+      margin-bottom: 0.4rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+      width: 100%;
+      padding: 0.75rem 1rem;
+      border: 1.5px solid var(--cinza-card);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: var(--texto);
+      background: var(--cinza-bg);
+      transition: border-color 0.2s;
+      outline: none;
+      -webkit-appearance: none;
+    }
+
+    .form-group input:focus,
+    .form-group select:focus,
+    .form-group textarea:focus {
+      border-color: var(--azul);
+      background: var(--branco);
+    }
+
+    .form-group textarea { resize: vertical; min-height: 100px; }
+
+    .btn-form {
+      width: 100%;
+      background: var(--lima);
+      color: var(--preto);
+      border: none;
+      padding: 0.9rem;
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.95rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: background 0.2s;
+      margin-top: 0.5rem;
+    }
+
+    .btn-form:hover { background: var(--lima-dark); }
+
+    /* ── FOOTER ── */
+    footer {
+      background: #0a0a0a;
+      padding: 2rem 5%;
+      text-align: center;
+      border-top: 1px solid rgba(255,255,255,0.06);
+    }
+
+    footer p { color: rgba(255,255,255,0.35); font-size: 0.82rem; }
+    footer strong { color: rgba(255,255,255,0.60); }
+
+    /* ── RESPONSIVO ── */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .sobre-grid, .contato-inner { grid-template-columns: 1fr; gap: 2.5rem; }
+      .hero-inner h1 { font-size: 2rem; }
+      .hero-btns { flex-direction: column; }
+      .btn-primary, .btn-ghost { text-align: center; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * { transition: none !important; transform: none !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <a href="#hero" class="nav-logo">ST <span>Tecnologia</span></a>
+    <ul>
+      <li><a href="#sobre">Sobre</a></li>
+      <li><a href="#servicos">Serviços</a></li>
+      <li><a href="#contato" class="nav-cta">Fale Conosco</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">⚡ Encruzilhada do Sul · RS</div>
+      <h1>Infraestrutura que<br /><em>funciona de verdade.</em></h1>
+      <p>Da instalação elétrica à fibra óptica, da câmera de segurança à torre de telecomunicação — a ST resolve com técnica e comprometimento.</p>
+      <div class="hero-btns">
+        <a href="https://wa.me/5551999568567?text=Olá!%20Gostaria%20de%20um%20orçamento." class="btn-primary" target="_blank" rel="noopener">💬 Pedir orçamento no WhatsApp</a>
+        <a href="#servicos" class="btn-ghost">Ver serviços</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE -->
+  <section id="sobre">
+    <div class="sobre-grid">
+      <div class="sobre-text">
+        <div class="section-label">Quem somos</div>
+        <h2 class="section-title">Técnica, confiança e resultado</h2>
+        <p>A ST Tecnologia e Infraestrutura atua em Encruzilhada do Sul e região com serviços especializados em elétrica, redes, segurança eletrônica e infraestrutura de telecomunicações.</p>
+        <p>Atendemos residências, comércios e empresas que precisam de serviços feitos com segurança, qualidade e prazo cumprido. Nossa equipe tem experiência em projetos simples e em instalações de alta complexidade técnica.</p>
+      </div>
+      <div class="diferenciais">
+        <div class="diferencial-item">
+          <div class="diferencial-icon">🔧</div>
+          <div>
+            <strong>Experiência técnica comprovada</strong>
+            <span>Profissionais com formação prática em elétrica, redes e telecomunicações.</span>
+          </div>
+        </div>
+        <div class="diferencial-item">
+          <div class="diferencial-icon">📍</div>
+          <div>
+            <strong>Atendimento local e regional</strong>
+            <span>Baseados em Encruzilhada do Sul, com atendimento rápido na região.</span>
+          </div>
+        </div>
+        <div class="diferencial-item">
+          <div class="diferencial-icon">🛡️</div>
+          <div>
+            <strong>Serviço com responsabilidade</strong>
+            <span>Instalações seguras, dentro das normas e com garantia no serviço prestado.</span>
+          </div>
+        </div>
+        <div class="diferencial-item">
+          <div class="diferencial-icon">📞</div>
+          <div>
+            <strong>Orçamento sem compromisso</strong>
+            <span>Entre em contato e receba um orçamento claro e transparente.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVIÇOS -->
+  <section id="servicos">
+    <div class="servicos-header">
+      <div class="section-label">O que fazemos</div>
+      <h2 class="section-title">Nossos Serviços</h2>
+      <p>Soluções completas para sua casa, comércio ou empresa.</p>
+    </div>
+    <div class="categorias">
+
+      <div class="categoria-card">
+        <div class="cat-header">
+          <div class="cat-icon">⚡</div>
+          <h3>Elétrica</h3>
+        </div>
+        <ul class="cat-lista">
+          <li>Instalação elétrica residencial</li>
+          <li>Aterramento elétrico profissional</li>
+          <li>Pequenos reparos elétricos</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card">
+        <div class="cat-header">
+          <div class="cat-icon">🌐</div>
+          <h3>Redes e Conectividade</h3>
+        </div>
+        <ul class="cat-lista">
+          <li>Instalação de roteador e rede interna</li>
+          <li>Infraestrutura de rede interna</li>
+          <li>Configuração de roteador Unifi</li>
+          <li>Configuração de RouterBoard (RB)</li>
+          <li>Load balance e failover</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card">
+        <div class="cat-header">
+          <div class="cat-icon">🔆</div>
+          <h3>Fibra Óptica</h3>
+        </div>
+        <ul class="cat-lista">
+          <li>Lançamento de cabos de fibra óptica</li>
+          <li>Fusão em fibra óptica</li>
+          <li>Infraestrutura completa de fibra</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card">
+        <div class="cat-header">
+          <div class="cat-icon">📡</div>
+          <h3>Internet via Satélite</h3>
+        </div>
+        <ul class="cat-lista">
+          <li>Instalação de Starlink</li>
+          <li>Configuração e integração com rede local</li>
+          <li>Serviços em altura</li>
+          <li>Montagem de torre</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card">
+        <div class="cat-header">
+          <div class="cat-icon">🔒</div>
+          <h3>Segurança Eletrônica</h3>
+        </div>
+        <ul class="cat-lista">
+          <li>Instalação de câmeras de segurança</li>
+          <li>Instalação de alarmes</li>
+          <li>Monitoramento e configuração</li>
+        </ul>
+      </div>
+
+      <div class="categoria-card">
+        <div class="cat-header">
+          <div class="cat-icon">🔩</div>
+          <h3>Estruturas e Soldas</h3>
+        </div>
+        <ul class="cat-lista">
+          <li>Pequenos reparos em solda</li>
+          <li>Estruturas em metal</li>
+          <li>Suportes e fixações diversas</li>
+        </ul>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTATO -->
+  <section id="contato">
+    <div class="contato-inner">
+      <div class="contato-info">
+        <div class="section-label">Fale com a gente</div>
+        <h2 class="section-title">Solicite seu orçamento</h2>
+        <p>Atendemos Encruzilhada do Sul e região. Entre em contato pelo canal de sua preferência.</p>
+        <div class="contato-canais">
+          <a href="https://wa.me/5551999568567?text=Olá!%20Gostaria%20de%20um%20orçamento." class="canal" target="_blank" rel="noopener">
+            <div class="canal-icon">💬</div>
+            <div class="canal-text">
+              <strong>WhatsApp</strong>
+              <span>(51) 9 9956-8567</span>
+            </div>
+          </a>
+          <a href="tel:+5551999568567" class="canal">
+            <div class="canal-icon">📞</div>
+            <div class="canal-text">
+              <strong>Ligar agora</strong>
+              <span>(51) 9 9956-8567</span>
+            </div>
+          </a>
+          <a href="mailto:contato.stsolucoes@gmail.com" class="canal">
+            <div class="canal-icon">✉️</div>
+            <div class="canal-text">
+              <strong>E-mail</strong>
+              <span>contato.stsolucoes@gmail.com</span>
+            </div>
+          </a>
+        </div>
+      </div>
+
+      <div class="contato-form">
+        <h3>Descreva o que você precisa</h3>
+        <div class="form-group">
+          <label>Seu nome</label>
+          <input type="text" placeholder="Como podemos te chamar?" />
+        </div>
+        <div class="form-group">
+          <label>Telefone / WhatsApp</label>
+          <input type="tel" placeholder="(51) 9 0000-0000" />
+        </div>
+        <div class="form-group">
+          <label>Tipo de serviço</label>
+          <select>
+            <option value="">Selecione...</option>
+            <option>Elétrica</option>
+            <option>Redes e conectividade</option>
+            <option>Fibra óptica</option>
+            <option>Starlink / Antena</option>
+            <option>Segurança eletrônica (câmera/alarme)</option>
+            <option>Estruturas e soldas</option>
+            <option>Outro</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Mensagem</label>
+          <textarea placeholder="Descreva brevemente o que precisa..."></textarea>
+        </div>
+        <button class="btn-form"
+          onclick="
+            const nome = this.closest('.contato-form').querySelector('input[type=text]').value;
+            const tel  = this.closest('.contato-form').querySelector('input[type=tel]').value;
+            const serv = this.closest('.contato-form').querySelector('select').value;
+            const msg  = this.closest('.contato-form').querySelector('textarea').value;
+            const texto = encodeURIComponent('Olá! Me chamo ' + nome + '. Tel: ' + tel + '. Serviço: ' + serv + '. ' + msg);
+            window.open('https://wa.me/5551999568567?text=' + texto, '_blank');
+          ">
+          Enviar pelo WhatsApp →
+        </button>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p><strong>ST Tecnologia e Infraestrutura</strong> · Encruzilhada do Sul, RS · <a href="mailto:contato.stsolucoes@gmail.com" style="color:rgba(255,255,255,0.35); text-decoration:none;">contato.stsolucoes@gmail.com</a></p>
+    <p style="margin-top:0.4rem;">© 2026 · Todos os direitos reservados</p>
+  </footer>
+
+</body>
+</html>
